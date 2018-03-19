@@ -21,3 +21,6 @@ int main(){
   printf("\n");
   return 0;
 }
+
+
+//take an element. compare it with all other elements after it. Then it is sorted. Now go for second element.
