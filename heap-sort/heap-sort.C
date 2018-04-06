@@ -11,23 +11,29 @@ int main(){
     scanf("%d",&a[i]);
   }
   heapsort(a,n);
+  for(i=0;i<n;i++){
+    printf("%d",a[i]);
+  }
 }
 
 void heapsort(int a[], int n){
   int i;
-  for(i=(n/2)-1;i>=0;i++){
+  int temp;
+  for(i=n/2-1;i>=0;i++){
     heapify(a,n,i);
   }
   for(i=n-1;i>=0;i--){
-    swap(a[0],a[i]);
+    temp = a[0];
+    a[0] = a[i];
+    a[i] = temp;
     heapify(a,i,0);
   }
 }
 
 void heapify(int a[], int n, int i){
   int largest = i;
-  int l = 2*i;
-  int r = 2*i + 1;
+  int l = 2*i + 1;
+  int r = 2*i + 2;
   if(l<n && a[l]<a[i]){
     largest = i;
   }
