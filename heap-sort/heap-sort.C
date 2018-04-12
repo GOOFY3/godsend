@@ -19,7 +19,7 @@ int main(){
 void heapsort(int a[], int n){
   int i;
   int temp;
-  for(i=n/2-1;i>=0;i++){
+  for(i=n/2-1;i>=0;i--){
     heapify(a,n,i);
   }
   for(i=n-1;i>=0;i--){
@@ -46,9 +46,9 @@ void heapify(int a[], int n, int i){
   heapify(a,n,largest);
 }
 
-void swap(int a, int b){
+void swap(int *a, int *b){
   int temp;
-  temp = a;
-  a = b;
-  b = temp;
+  temp = *a;
+  *a = *b;
+  *b = temp;
 }
