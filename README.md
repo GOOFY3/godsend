@@ -1,3 +1,3 @@
 # godsend
 
-All algorithms at a go!
+All algorithms at one go!
