@@ -27,15 +27,13 @@ class LinkedList(object):
         while current:
             print(current.data);
             current = current.next_node;
-
-    # def remove(self, data, previousNode):
-    #     prev = None;
-    #     current = self.head;
-    #     while current:
-    #         if current.data == data:
-    #
-    #         else:
-    #             current = current.next_node;
+    def remove(self, val):
+        current = self.head;
+        for i in range(1, self.size):
+            if current.get_next().data == val:
+                current.next_node = current.get_next().next_node;
+            else:
+                current = current.next_node;
 
 myList = LinkedList()
 print("Inserting:")
@@ -46,5 +44,7 @@ print(myList.insert(2))
 print(myList.insert(3))
 print("Printing:")
 print(myList.printList())
-print("Size")
+print("Size is:")
 print(myList.get_size())
+print(myList.remove(12))
+print(myList.printList())
