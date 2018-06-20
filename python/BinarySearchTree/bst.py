@@ -27,9 +27,7 @@ class Node(object):
     def traverseInorder(self):
         if self.leftChild is not None:
             self.leftChild.traverseInorder();
-
         print(self.data);
-
         if self.rightChild is not None:
             self.rightChild.traverseInorder();
     def remove(self, data):
