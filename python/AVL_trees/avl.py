@@ -19,10 +19,12 @@ class Node(object):
         return parentNode;
     def traverseInorder(self):
         if self.leftChild is not None:
-            return self.leftChild.traverseInorder();
+            self.leftChild.traverseInorder();
+
         print(self.data);
+
         if self.rightChild is not None:
-            return self.rightChild.traverseInorder();
+            self.rightChild.traverseInorder();
     def getMin(self):
         if self.leftChild is not None:
             return self.leftChild.getMin();
@@ -49,16 +51,20 @@ class avl(object):
         self.setBalance(parentNode);
 
         if parentNode.balance > 1:
-            print("yes!");
             if self.height(parentNode.leftChild.leftChild) >= self.height(parentNode.leftChild.rightChild):
                 parentNode = self.rotateRight(parentNode);
             else:
                 parentNode = self.rotateLeftRight(parentNode);
-        if parentNode.balance < -1:
+        elif parentNode.balance < -1:
             if self.height(parentNode.rightChild.rightChild) >= self.height(parentNode.rightChild.leftChild):
                 parentNode = self.rotateLeft(parentNode);
             else:
                 parentNode = self.rotateRightLeft(parentNode);
+        if parentNode.parentNode is not None:
+            self,rebalanceTree(parentNode.parentNode);
+        else:
+            self.rootNode = parentNode;
+
     def rotateLeftRight(self, node):
         print("rotating left then right..");
         node.leftChild = self.rotateLeft(node.leftChild);
@@ -77,18 +83,19 @@ class avl(object):
         b.leftChild = node;
         node.parentNode = b;
         if b.parentNode is not None:
-            if b.parentNode.rightChild == b:
+            if b.parentNode.rightChild == node:
                 b.parentNode.rightChild = b;
             else:
                 b.parentNode.leftChild = b;
         self.setBalance(node);
         self.setBalance(b);
         return b;
+
     def rotateRight(self, node):
         print("rotate Right...");
         b = node.leftChild;
         b.parentNode = node.parentNode;
-        node.leftChild = node.rightChild;
+        node.leftChild = b.rightChild;
         if node.leftChild is not None:
             node.leftChild.parentNode = node;
         b.rightChild = node;
@@ -102,6 +109,7 @@ class avl(object):
         self.setBalance(node);
         self.setBalance(b);
         return b;
+
     def setBalance(self, node):
         node.balance = (self.height(node.leftChild) - self.height(node.rightChild));
         return node.balance;
@@ -110,7 +118,11 @@ class avl(object):
             return -1;
         else:
             return 1+ max(self.height(node.leftChild), self.height(node.rightChild));
+    def traverseInorder(self):
+        self.rootNode.traverseInorder();
+
 tree = avl();
 tree.insert(4);
-tree.insert(6);
-tree.insert(5);
+tree.insert(2);
+tree.insert(3);
+tree.traverseInorder();
