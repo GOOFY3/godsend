@@ -73,5 +73,8 @@ heap.insert(12);
 heap.insert(-3);
 heap.insert(23);
 heap.insert(4);
+print("printing..");
+heap.printList();
+print("sorting...")
 heap.heapSort();
 heap.getMax();
