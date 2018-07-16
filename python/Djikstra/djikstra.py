@@ -8,12 +8,12 @@ class Vertex(object):
         self.adjacentList = []
         self.predecessor = None
         self.minDistance = sys.maxsize
-    def __cmp__(self, otherVertex):
-        return cmp(self.minDistance, otherVertex.minDistance);
-    def __lt__(self, otherVertex):
-        selfPriority = self.minDistance
-        otherPriority = otherVertex.minDistance
-        return selfPriority < otherPriority
+    # # def __cmp__(self, otherVertex):
+    # #     return cmp(self.minDistance, otherVertex.minDistance);
+    # def __lt__(self, otherVertex):
+    #     selfPriority = self.minDistance
+    #     otherPriority = otherVertex.minDistance
+    #     return selfPriority < otherPriority
 class Edge(object):
     def __init__(self, weight, startVertex, targetVertex):
         self.weight = weight
