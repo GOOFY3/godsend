@@ -24,7 +24,7 @@ class DisjointSets(object):
     # def makeSets(vertexList):
     #     for v in vertexList:
     #         self.makeSets(v)
-    # def makeSets(self, vertex):
+    # def makeSet(self, vertex):
     #     node = Node(0, len(self.rootNodes), None)
     def __init__(self, vertexList):
         self.vertexList = vertexList
